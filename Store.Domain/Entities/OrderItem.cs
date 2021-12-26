@@ -4,7 +4,7 @@ namespace Store.Domain.Entities;
 
 public class OrderItem : Entity
 {
-    public OrderItem(Product product, int quantity)
+    public OrderItem(Product? product, int quantity)
     {
         AddNotifications(
             new Contract<OrderItem>()

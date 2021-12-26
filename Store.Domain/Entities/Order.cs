@@ -7,7 +7,7 @@ namespace Store.Domain.Entities;
 
 public class Order : Entity
 {
-    public Order(Customer customer, decimal deliveryFee, Discount discount)
+    public Order(Customer customer, decimal deliveryFee, Discount? discount)
     {
         AddNotifications(new Contract<Order>()
             .Requires()
@@ -29,9 +29,9 @@ public class Order : Entity
     public IList<OrderItem> Items { get; private set; }
     public decimal DeliveryFee { get; private set; }
     public EOrderStatus Status { get; private set; }
-    public Discount Discount { get; private set; }
+    public Discount? Discount { get; private set; }
 
-    public void AddItem(Product product, int quantity)
+    public void AddItem(Product? product, int quantity)
     {
         var item = new OrderItem(product, quantity);
         if (item.IsValid)
